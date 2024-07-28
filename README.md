@@ -124,6 +124,110 @@ As a developer you must be able to understand the language of diagrams. The begi
 `` Sources: ``
   * [BP]
 
+##Programming Paradigms
+
+- knowing different paradigms of programming
+
+- Can differentiate between the usage of each one
+
+- Can use multi-paradigm ability of programming language
+
+
+##Memory Management
+
+- Knowing what is GC
+
+- Knowing how garbage collection (GC) works in .NET Core
+
+- Knowing how detect memory issues
+
+- Large objects heap
+
+- Ports exhaustion on HttpClient
+
+- Object pooling
+
+
+## Domain-Driven Design - Strategic Design
+
+- Bounded context
+
+- Ubiquitous Language
+
+- Context Maps
+
+- Shared Kernel  
+
+- Customer / Supplier
+
+- Conformist
+
+- Partner
+
+
+## CQRS - Command and Query Responsibility Segregation
+
+- Regular Model
+
+- Transaction Script in the Command stack
+
+- Query stack (LET or SQL)
+
+  
+## Communication patterns
+
+- Synchronous messaging
+
+- HTTP
+
+- gRPC
+
+- Asynchronous messaging
+
+- Notifications
+
+- Request/response
+
+- Request/asynchronous response
+
+- Publish/Subscriber
+
+- Publish/asynchronous response
+
+
+## Messaging
+
+- Exactly-Once, at-least-once, at-most-once Delivery
+
+- Outbox, Inbox patterns and delivery guarantees
+
+- Idempotent Consumer
+
+
+## Security
+
+- SSL
+
+- TSL
+
+- HTTPS
+
+- Certificates
+
+  
+# Concurrency Management
+
+- knowing Concurrency
+
+- Types Pessimistic
+
+- Optimistic
+
+- Last In Wins
+
+- Resolution strategies
+
+
 ### Supplementary references: 
 - [SOA VS Microservices]
 - [ASP.NET Core Best Practices]
