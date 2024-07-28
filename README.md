@@ -165,7 +165,7 @@ As a developer you must be able to understand the language of diagrams. The begi
 - Partner
 
 
-## CQRS - Command and Query Responsibility Segregation
+## [CQRS] - Command and Query Responsibility Segregation
 
 - Regular Model
 
@@ -282,3 +282,4 @@ As a developer you must be able to understand the language of diagrams. The begi
 
 [SOA VS Microservices]: <https://www.ibm.com/think/topics/soa-vs-microservices>
 [ASP.NET Core Best Practices]: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-8.0>
+[CQRS]: <https://www.microsoftpressstore.com/articles/printerfriendly/2248809>
