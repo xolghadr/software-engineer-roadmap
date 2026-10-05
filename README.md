@@ -1,285 +1,83 @@
 # Software Engineer Roadmap
 
-This is a detailed roadmap to become a senior software developer.
-
-## Object Oriented Programming
-- Encapsulation
-- Abstraction
-- Modularity
-- Hierarchy
-
-`` Sources: ``
-- [OOP-1]
-- [OOP-2]
-
----
-## SOLID Principles
--  Single-responsibility Principle
--  Open-closed Principle
--  Liskov Substitution Principle
--  Interface Segregation Principle
--  Dependency Inversion Principle
-  
-`` Sources: ``
-- [SOLID-1]
-- [SOLID-2]
-- [SOLID-3]
----
-## General Responsibility Assignment Software Principles (GRASP)
-- Controller
-- Creator
-- Indirection
-- Information Expert
-- Low Coupling
-- High Cohesion
-- Polymorphism
-- Protected Variations
-- Pure Fabrication
-
-`` Sources: ``
-- [GRASP-1]
-- [GRASP-2]
-
----
-## Follow these links to learn markdown files
-
-`` Sources: ``
-- [README-1]
-- [README-2]
-- [README-3]
-
----
-## Types of relationships in OOP
-- Composition
-- Aggregation
-- Association
-- Inheritance
-- Realization (Implementation)
+A roadmap for a **senior backend engineer**. Use it to review what you already know, to learn a topic properly, or to prepare for an interview.
 
-`` Source: ``
-- [OOP-3]
+This is the path from working on features inside one service to owning the design, the failure modes, and the tradeoff. The examples are language-neutral. Where a platform detail matters, the worked example is **.NET 10**, the current long-term support release as of October 2026.
 
----
-## Learning UML
-As a developer you must be able to understand the language of diagrams. The beginning of this path is using the UML. 
+Standards named in this repo were checked in **October 2026**. Each topic has one place to start. The full list, with the status of each source, is in [appendix/references.md](appendix/references.md).
 
-`` Watch these videos: ``
-- [UML-1]
-- [UML-2]
+## How to use this roadmap
 
----
-## Architectural Style
+**Review, about two weeks.** Read the outcome and the review questions for each must-have topic. Answer out loud. If you stall, open the "Start here" source, then come back the next day.
 
-1. Microservices Architecture
-`` Sources: ``
-  * [MA-1]
-  * [MA-2]
-  * [MA-3]
+**Learn, about 8 to 12 weeks.** Take one topic at a time. Read the page, read the start-here source, do the exercise, and answer the review questions the next day. Then do one worked design from [designs/](designs/).
 
-2. Event-Driven Architecture
-`` Sources: ``
-  * [ED-1]
-  * [ED-2]
-  * [ED-3]
+**Interview, about 10 days.** Use the [interview index](interview/index.md). On day A, sit one timed prompt (35 to 45 minutes for a design, 15 minutes for a spoken review). On day B, answer the review questions for the topics that prompt used. Finish with the two stories in [Senior judgment](tracks/07-senior-judgment.md).
 
-3. Service-Oriented Architecture
-`` Sources: ``
-  * [SO-1]
-  * [SO-2]
-  * [SO-3]
+A topic page always has the same shape: what you should be able to do, a short explanation, when it matters, what it costs, a failure, a source, review questions, an interview cue, and an exercise.
 
-4. Component-based Architecture
-`` Sources: ``
-  * [CB-1]
-  * [CB-2]
+## Scope
 
----
-## Architectural Design Principles and Practices
-1. The scale cube (x,y,z dimensions)
-`` Sources: ``
-  * [TSC]
+In scope:
 
-2. CAP Theorem
-`` Sources: ``
-  * [CAP-1]
-  * [CAP-2]
+- Code design inside a service
+- Data, HTTP APIs, and consistency
+- Architecture and distributed messaging
+- Production: security, observability, delivery
+- The judgment interviews look for in a senior backend candidate
 
-3. Eventual Consistency
-`` Sources: ``
-  * [EC]
+Out of scope, on purpose:
 
-4. Hollywood Principle (Don't call us, we'll call you)
-`` Sources: ``
-  * [HP]
+- Frontend, mobile UI, and visual design
+- A catalog of coding-puzzle solutions. Practice those in [dsa-guide](https://github.com/xolghadr/dsa-guide), a C# study guide in course order: structures, cost, graphs, and which structure fits the job. This roadmap covers the engineering around them: saying how much work a path does, choosing a structure, and reading a hot path in a running service.
+- Vendor certification dumps
 
-5. Persistence Ignorance
-`` Sources: ``
-  * [PI]
+The .NET runtime notes (garbage collection, `HttpClient`, async) live in [appendix/dotnet-runtime.md](appendix/dotnet-runtime.md). Read them if you work on .NET. The rest of the roadmap stands without them. The EF Core deep dive, including tracking, split queries, concurrency tokens, and `DbContext` lifetime, lives in [ef-core-review](https://github.com/xolghadr/ef-core-review). It assumes EF Core 8, and it marks the sections that need a newer release. The data track links it where the ORM detail matters. PostgreSQL and the HTTP standards stay the language-neutral sources.
 
-6. Composition over Inheritance
-`` Sources: ``
-  * [COI]
+## Must-have and good-to-have
 
-7. Back Pressure
-`` Sources: ``
-  * [BP]
+**Must-have** topics are the ones a senior backend interview, or the first year of senior work, will actually touch. Learn these.
 
-##Programming Paradigms
+**Good-to-have** topics are real, and they come up often enough to be worth a page. Learn them after the must-haves in that track. Skipping one of them does not leave a hole in the core. Skipping a must-have does.
 
-- knowing different paradigms of programming
+| Track | Must-have | Good-to-have |
+| --- | --- | --- |
+| [1. Language and runtime](tracks/01-language-and-runtime.md) | Paradigms, memory, in-process concurrency | — |
+| [2. Code design](tracks/02-code-design.md) | Relationships, SOLID, composition, six patterns, diagrams | Hollywood principle, dependency injection as a habit |
+| [3. Testing and change](tracks/03-testing-and-change.md) | Tests, Git and review, debugging | Contract tests, property-based tests |
+| [4. Data and APIs](tracks/04-data-and-apis.md) | Schema, indexes, transactions, concurrency, migrations, N+1 and pools, persistence ignorance, HTTP APIs | — |
+| [5. Architecture](tracks/05-architecture.md) | Styles in order, boundaries, scale cube, CAP and PACELC, consistency, back pressure, communication, delivery, outbox and inbox, DDD context maps, CQRS, resilience, caching, replication and partitioning, load balancing, capacity, sagas | Event sourcing, tactical DDD, API gateway, CDN, consistent hashing, search, GraphQL, webhooks, feature flags, multi-region, consensus |
+| [6. Production](tracks/06-production.md) | TLS, authentication and authorization, secrets and supply chain, observability and SLOs, incidents, CI/CD and containers, backups | Passkeys, canary releases, privacy habits, signing images, model-call risks |
+| [7. Senior judgment](tracks/07-senior-judgment.md) | Design docs, estimation, two stories | Mentoring |
+| [Worked designs](designs/) | All six | — |
+| [Interview index](interview/index.md) | The whole table | — |
 
-- Can differentiate between the usage of each one
+GRASP, the responsibility-assignment vocabulary from Craig Larman, is in [appendix/grasp.md](appendix/grasp.md). It is optional. Interviews usually say SOLID and the pattern names above.
 
-- Can use multi-paradigm ability of programming language
+## The six designs
 
+Read these after track 5. Each one asks for numbers, a picture, the option you reject, and the failure you expect.
 
-##Memory Management
+1. [URL shortener](designs/url-shortener.md) — read-heavy cache and id generation
+2. [Activity feed](designs/activity-feed.md) — fan-out and a celebrity user
+3. [Chat](designs/chat.md) — connections, order, presence
+4. [Rate limiter](designs/rate-limiter.md) — where the limit lives
+5. [File upload](designs/file-upload.md) — object storage and a slow scan
+6. [Order checkout](designs/order-checkout.md) — one charge, an outbox, a saga
 
-- Knowing what is GC
+## A week of review
 
-- Knowing how garbage collection (GC) works in .NET Core
+If you only have one week before an interview, walk this list and stop to study wherever the answer is fuzzy.
 
-- Knowing how detect memory issues
+1. Transactions, isolation, and lost updates
+2. HTTP status codes, idempotency, and pagination
+3. Timeouts, retries, and idempotent consumers
+4. Outbox, inbox, and the checkout design
+5. Caching and the URL shortener
+6. Load, replication, and a hot partition
+7. Authentication versus authorization
+8. One design doc out loud, plus one incident story
 
-- Large objects heap
+## Old outline
 
-- Ports exhaustion on HttpClient
-
-- Object pooling
-
-
-## Domain-Driven Design - Strategic Design
-
-- Bounded context
-
-- Ubiquitous Language
-
-- Context Maps
-
-- Shared Kernel  
-
-- Customer / Supplier
-
-- Conformist
-
-- Partner
-
-
-## [CQRS] - Command and Query Responsibility Segregation
-
-- Regular Model
-
-- Transaction Script in the Command stack
-
-- Query stack (LET or SQL)
-
-  
-## Communication patterns
-
-- Synchronous messaging
-
-- HTTP
-
-- gRPC
-
-- Asynchronous messaging
-
-- Notifications
-
-- Request/response
-
-- Request/asynchronous response
-
-- Publish/Subscriber
-
-- Publish/asynchronous response
-
-
-## Messaging
-
-- Exactly-Once, at-least-once, at-most-once Delivery
-
-- Outbox, Inbox patterns and delivery guarantees
-
-- Idempotent Consumer
-
-
-## Security
-
-- SSL
-
-- TSL
-
-- HTTPS
-
-- Certificates
-
-  
-# Concurrency Management
-
-- knowing Concurrency
-
-- Types Pessimistic
-
-- Optimistic
-
-- Last In Wins
-
-- Resolution strategies
-
-
-### Supplementary references: 
-- [SOA VS Microservices]
-- [ASP.NET Core Best Practices]
-
-[OOP-1]: <https://www.geeksforgeeks.org/introduction-of-object-oriented-programming/>
-[OOP-2]: <https://www.educative.io/blog/object-oriented-programming/>
-[OOP-3]: <https://blog.visual-paradigm.com/what-are-the-six-types-of-relationships-in-uml-class-diagrams/>
-
-[SOLID-1]: <https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design/>
-[SOLID-2]: <https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/>
-[SOLID-3]: <https://www.geeksforgeeks.org/solid-principle-in-programming-understand-with-real-life-examples/>
-
-[GRASP-1]: <https://www.geeksforgeeks.org/grasp-design-principles-in-ooad/>
-[GRASP-2]: <https://medium.com/@mehar.chand.cloud/grasp-general-responsibility-assignment-software-patterns-7d1104b0aad5/>
-
-[README-1]: <https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/>
-[README-2]: <https://www.youtube.com/watch?v=zKS7mjVvxGc/>
-[README-3]: <https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
-
-[UML-1]: <https://www.youtube.com/watch?v=6XrL5jXmTwM/>
-[UML-2]: <https://www.youtube.com/watch?v=WnMQ8HlmeXc/>
-
-[MA-1]: <https://cloud.google.com/learn/what-is-microservices-architecture#:~:text=on%20Google%20Cloud.-,Microservices%20architecture%20defined,architecture%20diagrams%20and%20services%20independently/>
-[MA-2]: <https://microservices.io/patterns/microservices.html/>
-[MA-3]: <https://medium.com/hashmapinc/the-what-why-and-how-of-a-microservices-architecture-4179579423a9/>
-
-[ED-1]: <https://aws.amazon.com/event-driven-architecture//>
-[ED-2]: <https://www.redhat.com/en/topics/integration/what-is-event-driven-architecture/>
-[ED-3]: <https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven/>
-
-[SO-1]: <https://www.redhat.com/en/topics/cloud-native-apps/what-is-service-oriented-architecture//>
-[SO-2]: <https://aws.amazon.com/what-is/service-oriented-architecture/#:~:text=you%20implement%20microservices%3F-,What%20is%20service%2Doriented%20architecture%3F,other%20across%20platforms%20and%20languages/>
-[SO-3]: <https://www.ibm.com/topics/soa/>
-
-[CB-1]: <https://configr.medium.com/component-based-architecture-building-scalable-maintainable-software-36137d56ff46/>
-[CB-2]: <https://marutitech.com/guide-to-component-based-architecture/>
-
-[TSC]: <https://microservices.io/articles/scalecube.html/>
-
-[CAP-1]: <https://medium.com/@ngneha090/understanding-the-cap-theorem-balancing-consistency-availability-and-partition-cb11c2b97e2b/>
-[CAP-2]: <https://www.ibm.com/topics/cap-theorem/>
-
-[EC]: <https://medium.com/@abhirup.acharya009/strong-consistency-vs-eventual-consistency-19ce6f87c112/>
-
-[HP]: <https://medium.com/@sandy619g/hollywood-principle-in-software-engineering-5d68f679b524/>
-
-[PI]: <https://learn.microsoft.com/en-us/archive/msdn-magazine/2009/june/the-unit-of-work-pattern-and-persistence-ignorance/>
-
-[COI]: <https://sheldonrcohen.medium.com/favoring-composition-over-inheritance-ff2ece6b7b4e/>
-
-[BP]: <https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7/>
-
-[SOA VS Microservices]: <https://www.ibm.com/think/topics/soa-vs-microservices>
-[ASP.NET Core Best Practices]: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-8.0>
-[CQRS]: <https://www.microsoftpressstore.com/articles/printerfriendly/2248809>
+The first version of this repo was a list of topic names and links. Those topics are still here. They now have an explanation, a current source, and a way to practice. References that were blog summaries, or links with a broken shape, are replaced in [appendix/references.md](appendix/references.md).
