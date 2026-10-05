@@ -126,7 +126,11 @@ A bus rule that "just" transforms customer ids between five systems, with no own
 
 ### Learn
 
-Start here: the .NET architecture guide's [service-oriented architecture](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/service-oriented-architecture) page. It is short, and it puts SOA next to microservices without treating them as the same thing.
+Start here: IBM's [What is service-oriented architecture?](https://www.ibm.com/think/topics/soa). A service there is a business capability with the code and the data for that capability, published behind a contract. Callers bind to the contract. The page also explains the enterprise service bus: the central component that used to route, transform, and translate protocols so teams would not wire every pair of systems by hand. That is the historical shape you will still meet.
+
+Read [SOA versus microservices](https://www.ibm.com/think/topics/soa-vs-microservices) for the scope test. SOA integrates across an enterprise. A microservice splits one application, and it would rather copy data than share a runtime dependency. Keep that test. The rest of the page is a vendor article: skip the product pitches, and do not repeat a line that crowns one programming language or calls one style simply slower.
+
+The .NET architecture guide has a [service-oriented architecture](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/service-oriented-architecture) chapter too. It is about a page, from the 2018 book, and it only says that a central bus is normal in SOA and unwelcome in microservices. Use it when you are already in that book. It does not explain the contract, the registry, or the bus.
 
 ### Review
 

@@ -29,10 +29,10 @@ In scope:
 Out of scope, on purpose:
 
 - Frontend, mobile UI, and visual design
-- A catalog of coding-puzzle solutions. Practice data structures and algorithms on a set you already use. This roadmap covers the engineering around them: saying how much work a path does, choosing a structure, and reading a hot path in a running service.
+- A catalog of coding-puzzle solutions. Practice those in [dsa-guide](https://github.com/xolghadr/dsa-guide), a C# study guide in course order: structures, cost, graphs, and which structure fits the job. This roadmap covers the engineering around them: saying how much work a path does, choosing a structure, and reading a hot path in a running service.
 - Vendor certification dumps
 
-The .NET runtime notes (garbage collection, `HttpClient`, the large object heap) live in [appendix/dotnet-runtime.md](appendix/dotnet-runtime.md). Read them if you work on .NET. The rest of the roadmap stands without them.
+The .NET runtime notes (garbage collection, `HttpClient`, async) live in [appendix/dotnet-runtime.md](appendix/dotnet-runtime.md). Read them if you work on .NET. The rest of the roadmap stands without them. The EF Core deep dive, including tracking, split queries, concurrency tokens, and `DbContext` lifetime, lives in [ef-core-review](https://github.com/xolghadr/ef-core-review). It assumes EF Core 8, and it marks the sections that need a newer release. The data track links it where the ORM detail matters. PostgreSQL and the HTTP standards stay the language-neutral sources.
 
 ## Must-have and good-to-have
 

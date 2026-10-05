@@ -87,9 +87,11 @@ A dictionary keyed by request id, used for "a moment" of debugging, with no remo
 
 ### Learn
 
-Start here: the concept above, then the collector you actually run. For .NET, [Garbage collection fundamentals](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals).
+Start here: the concept above. It is the language-neutral model: roots, generations, and a live reference that looks like a leak.
 
-Book, when you want the real model: Jones, Hosking, Moss, *The Garbage Collection Handbook*.
+The .NET fundamentals page is the map of the collector you are running, and it stops at that map. Workstation versus server mode, background collection, the large object heap, and why a .NET 10 process uses less memory than the same service on an older runtime are in the [.NET runtime appendix](../appendix/dotnet-runtime.md), with the manual page for each one. Those pages are the study. The fundamentals link alone does not cover them.
+
+Book, when you want the collector as a field: Jones, Hosking, Moss, *The Garbage Collection Handbook*.
 
 ### Review
 
@@ -141,17 +143,22 @@ Locks are simple and can serialize your throughput. Lock-free structures are fas
 
 Two requests update a shared `Dictionary` with no synchronization. Most of the time it works. On a busy hour it throws, or it loses an entry. The fix is a concurrent dictionary, a lock around a private dictionary, or (better) no shared mutable cache on the request path.
 
-Blocking a thread-pool thread on async work can starve the pool: the blocked thread is the one that was supposed to finish the async operation. On .NET this shows up when someone calls `.Result` or `.Wait()` on a task in application code. The appendix has the platform note.
+Blocking a pool thread on work that is itself async can starve the pool. The blocked thread is one of the threads that was supposed to run the continuation. On .NET this is `.Result`, `.Wait()`, or `GetAwaiter().GetResult()` on a task that has not finished.
+
+The two runtimes fail differently, and the difference is the part a short overview skips. Classic ASP.NET captured a request context. The continuation needed that context, the blocked request thread was holding it, and the call deadlocked. ASP.NET Core does not capture that context, so the same call usually does not deadlock. It still occupies a pool thread. Under load the pool grows, or requests queue, and a single-call unit test stays green. `await` releases the thread for the wait. It does not make the CPU work between the awaits any cheaper.
+
+`ConfigureAwait(false)` matters in a library that might be called on a captured context. Application code on ASP.NET Core rarely needs it. `ValueTask` is for a result that is often already complete. Await one once.
 
 ### Learn
 
-Start here: your runtime's threading basics. For .NET, [Managed threading basics](https://learn.microsoft.com/en-us/dotnet/standard/threading/managed-threading-basics).
+Start here: the model above. Threads, races, and locks are your runtime's threading chapter. For .NET that chapter is [Managed threading basics](https://learn.microsoft.com/en-us/dotnet/standard/threading/managed-threading-basics), and it does not teach `async`. The mechanism article is Stephen Toub's [How async/await really works](https://devblogs.microsoft.com/dotnet/how-async-await-really-works/). The failure catalog is David Fowler's [ASP.NET Core diagnostic scenarios](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios). The `ConfigureAwait` questions are Toub's [FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/). The appendix restates the pitfalls next to `HttpClient`.
 
 ### Review
 
 1. What does async change about threads, and what does it leave unchanged about CPU work?
 2. Draw a two-lock deadlock in words.
 3. Why is "it passed the tests" a weak answer when the bug is a race?
+4. Why can `.Result` deadlock on classic ASP.NET and starve the thread pool on ASP.NET Core?
 
 ### In an interview
 

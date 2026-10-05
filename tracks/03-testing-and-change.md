@@ -177,7 +177,7 @@ Take a flaky or confusing bug you remember. Write the hypothesis you wish you ha
 
 A consumer-driven contract is a test that records the requests a client makes and the responses it needs. The provider runs that contract in its pipeline. The client's assumptions break in the provider's build, before production.
 
-[Pact](https://pact.io/) is the tool people mean. Use it when several teams share an API and integration environments are scarce. Skip it when one team owns both sides and already runs an integration test against the real API.
+[Pact](https://docs.pact.io/) is the tool people mean. Use it when several teams share an API and integration environments are scarce. Skip it when one team owns both sides and already runs an integration test against the real API. The documentation is the reference. The project home is [pact.io](https://pact.io/).
 
 ### Property-based tests
 

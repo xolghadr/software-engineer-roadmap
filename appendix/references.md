@@ -10,6 +10,13 @@ The first version of this repo pointed at a mix of vendor pages, GeeksforGeeks, 
 
 This version keeps a source when it is a standard, an official manual, or a canonical article a senior can defend. Summaries that only repeat a definition were dropped. Books are named where a web page would be a thin substitute. Drafts are labeled as drafts.
 
+Two pages were blocked on the first pass in October 2026 and opened again before this list was settled.
+
+- IBM's SOA overview is the start-here page. It explains the contract, the registry, and the enterprise service bus. The .NET architecture guide's SOA chapter is about a page, from the 2018 book, and it only contrasts the bus with microservices. It stays as a companion when you are already in that book.
+- Google Cloud's "what is microservices" page is a product introduction. The tradeoff list on microservices.io is the page a design answer can defend, so the Google overview is not a source here.
+
+Pact's documentation host was slow on that same pass. It is the reference. The project homepage is only the front door.
+
 ## Standards
 
 | Source | Status | Use it for |
@@ -50,14 +57,20 @@ This version keeps a source when it is a standard, an official manual, or a cano
 | [PostgreSQL backup](https://www.postgresql.org/docs/current/backup.html) | Base backups and point-in-time recovery |
 | [Npgsql connection string](https://www.npgsql.org/doc/connection-string-parameters.html) | Pool settings on .NET |
 | [.NET support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core) | Which runtime is still patched. .NET 10 is the LTS to start on as of October 2026 |
-| [Garbage collection fundamentals](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals) | The collector you are actually running |
-| [Large object heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) | The 85,000-byte threshold |
+| [Garbage collection fundamentals](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals) | The map: roots and generations. It does not cover the modes below |
+| [Workstation and server GC](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/workstation-server-gc) | Which mode, and what server GC spends |
+| [Background garbage collection](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/background-gc) | Generation 2 overlaps; generations 0 and 1 still pause |
+| [Large object heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) | The 85,000-byte threshold, sweep versus compact. The long walkthrough is scoped to Windows |
+| [DATAS](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/datas) | Heap size tracks live data. On by default since .NET 9 |
+| [GC config settings](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector) | The knobs, including the LOH threshold and DATAS. Read before you set one |
 | [HttpClient guidelines](https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/http/httpclient-guidelines) | Lifetime and sockets |
 | [IHttpClientFactory](https://learn.microsoft.com/en-us/dotnet/core/extensions/httpclient-factory) | The ASP.NET Core way to share clients |
-| [Object pool](https://learn.microsoft.com/en-us/aspnet/core/performance/objectpool) | Pooling expensive objects |
-| [Managed threading](https://learn.microsoft.com/en-us/dotnet/standard/threading/managed-threading-basics) | Threads on .NET |
+| [Object pool](https://learn.microsoft.com/en-us/aspnet/core/performance/objectpool) | Pooling expensive objects. The older `dotnet/core/extensions/object-pool` URL is a 404 |
+| [Managed threading](https://learn.microsoft.com/en-us/dotnet/standard/threading/managed-threading-basics) | Threads on .NET. It does not teach `async` |
+| [Debug thread-pool starvation](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/debug-threadpool-starvation) | What a blocked pool looks like |
 | [EF Core concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency) | A version token in the ORM |
 | [ASP.NET Core best practices](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices) | Hot-path habits. Re-read them for the version you run |
+| [ASP.NET Core memory](https://learn.microsoft.com/en-us/aspnet/core/performance/memory?view=aspnetcore-10.0) | The pictures: a static leak, server versus workstation, the 85,000-byte cliff, `HttpClient` ports. .NET 10 view |
 | [.NET microservices architecture guide](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/) | Applied DDD and CQRS |
 | [Persistence layer](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) | Mapping at the edge of the domain |
 | [Tactical DDD chapter](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice) | Entity, value object, aggregate |
@@ -109,10 +122,18 @@ This version keeps a source when it is a standard, an official manual, or a cano
 | [The Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications) | Put tests where the risk is |
 | [Stripe idempotent requests](https://docs.stripe.com/api/idempotent_requests) | The concrete idempotency contract to copy. The header name is widespread. The IETF draft has expired |
 | [What is event-driven architecture?](https://aws.amazon.com/event-driven-architecture/) | A short industry overview |
-| [Service-oriented architecture](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/service-oriented-architecture) | SOA next to microservices, in the .NET architecture guide |
+| [What is service-oriented architecture?](https://www.ibm.com/think/topics/soa) | The contract, the registry, and the enterprise service bus. Start here for SOA |
+| [SOA versus microservices](https://www.ibm.com/think/topics/soa-vs-microservices) | Scope, reuse, and shared data. Skip the product pitches |
+| [Service-oriented architecture (.NET guide)](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/service-oriented-architecture) | A one-page contrast from the 2018 book. Companion only |
 | [Twelve-factor](https://12factor.net/) | Config, logs, and processes |
 | [Testcontainers](https://testcontainers.com/) | Disposable databases in tests |
-| [Pact](https://pact.io/) | Consumer-driven contracts |
+| [Pact documentation](https://docs.pact.io/) | Consumer-driven contracts. Project home: [pact.io](https://pact.io/) |
+| [How async/await really works](https://devblogs.microsoft.com/dotnet/how-async-await-really-works/) (Stephen Toub) | The state machine. This is the async study, not the threading overview |
+| [ConfigureAwait FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/) (Stephen Toub) | When `ConfigureAwait(false)` matters |
+| [ValueTask](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/) | When the result is often already complete |
+| [ASP.NET Core diagnostic scenarios](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios) (David Fowler) | Sync-over-async, timeouts, and the pool, in a real host |
+| [Preparing for the .NET 10 GC](https://devblogs.microsoft.com/dotnet/preparing-for-dotnet-10-gc/) (Maoni Stephens) | Why a .NET 10 memory graph moved, and when to turn DATAS off |
+| [.NET memory performance analysis](https://github.com/Maoni0/mem-doc/blob/master/doc/.NETMemoryPerformanceAnalysis.md) (Maoni Stephens) | How to read a collection. The hours-of-study note |
 | [SOLID introduction](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design/) | A readable secondary explanation. Martin's book below is the source |
 
 ## Books worth owning
@@ -129,7 +150,8 @@ These do not go stale the way a blog does. Editions matter. Prefer the latest ed
 - Len Bass, Paul Clements, Rick Kazman, *Software Architecture in Practice*. Component-and-connector views.
 - Robert C. Martin, *Agile Software Development, Principles, Patterns, and Practices*. The SOLID principles.
 - Craig Larman, *Applying UML and Patterns*. GRASP. Optional.
-- Jones, Hosking, and Moss, *The Garbage Collection Handbook*. When the manual is not enough.
+- Jones, Hosking, and Moss, *The Garbage Collection Handbook*. The language-neutral collector. When the manual is not enough.
+- Konrad Kokosa, *Pro .NET Memory Management*. The .NET memory book: generations, the large object heap, and how to read a dump. Pair it with Maoni Stephens' analysis note above.
 - Gregor Hohpe and Bobby Woolf, *Enterprise Integration Patterns*.
 - Peter Van Roy, [Programming Paradigms for Dummies](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf). A free chapter, not a full book. Enough for the paradigm map.
 - Alex Xu, *System Design Interview*. Extra design reps after the six in this repo. Use it as practice, and check its product advice against the standards above.
@@ -139,6 +161,15 @@ These do not go stale the way a blog does. Editions matter. Prefer the latest ed
 - **Idempotency-Key.** Stripe, Adyen, and many others implement it. The IETF draft expired in April 2026. Document the behavior you implement: same key and same payload returns the stored result, same key and different payload is an error, and you publish the retention.
 - **Rate-limit response headers** such as `RateLimit-Remaining` are a common convention. `429` and `Retry-After` are the part that is actually in HTTP.
 - **OAuth 2.1** is the draft that deletes the unsafe flows. RFC 9700 is the document you can cite today.
+
+## Companion guides
+
+These are separate repos. This roadmap links them where the detail belongs. It does not copy them.
+
+| Source | Use it for |
+| --- | --- |
+| [dsa-guide](https://github.com/xolghadr/dsa-guide) | Structures, cost, graphs, and which structure fits, in C#. The coding-puzzle practice this roadmap leaves out |
+| [ef-core-review](https://github.com/xolghadr/ef-core-review) | EF Core in depth: `DbContext` lifetime, tracking, split queries, concurrency tokens, migrations. Baseline EF Core 8, with newer behavior marked. The PostgreSQL manual stays the database source |
 
 ## Dropped from the old outline
 

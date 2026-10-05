@@ -195,7 +195,7 @@ Two support agents open the same ticket, both add a note in a "notes" text colum
 
 ### Learn
 
-Start here: [PostgreSQL explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html), and, if you use Entity Framework, [handling concurrency conflicts](https://learn.microsoft.com/en-us/ef/core/saving/concurrency).
+Start here: [PostgreSQL explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html), and, if you use Entity Framework, [handling concurrency conflicts](https://learn.microsoft.com/en-us/ef/core/saving/concurrency). The worked EF Core notes (row versions, `DbUpdateConcurrencyException`, a disconnected `Update` that overwrites) are in [ef-core-review](https://github.com/xolghadr/ef-core-review). That review is the .NET deep dive. The PostgreSQL page stays the database manual.
 
 HTTP preconditions are in [RFC 9110, section 13](https://www.rfc-editor.org/rfc/rfc9110.html).
 
@@ -249,7 +249,7 @@ Expand/contract takes more than one deploy. The cost of skipping it is an outage
 
 ### Learn
 
-Start here: the expand/contract sequence above. For PostgreSQL locking specifics, the [explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html) page includes `ALTER TABLE` lock levels in the broader locking docs; also read your migrator's notes for the version you run.
+Start here: the expand/contract sequence above. For PostgreSQL locking specifics, the [explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html) page includes `ALTER TABLE` lock levels in the broader locking docs; also read your migrator's notes for the version you run. If the migrator is EF Core, the migration and seeding notes are in [ef-core-review](https://github.com/xolghadr/ef-core-review).
 
 ### Review
 
@@ -293,7 +293,7 @@ A timeout spike after a scale-out. Each new instance added 100 connections. The 
 
 ### Learn
 
-Start here: your ORM's documentation on eager loading, plus the pool settings of the driver you use. For Npgsql, the [connection string pool options](https://www.npgsql.org/doc/connection-string-parameters.html) are the reference.
+Start here: your ORM's documentation on eager loading, plus the pool settings of the driver you use. For Npgsql, the [connection string pool options](https://www.npgsql.org/doc/connection-string-parameters.html) are the reference. On EF Core, `Include`, split queries, and a join that explodes into a Cartesian product are worked through in [ef-core-review](https://github.com/xolghadr/ef-core-review). The fix is still one query or a batch, whichever the manual shows for your version.
 
 ### Review
 
@@ -337,7 +337,7 @@ A domain method that calls `SaveChanges()` halfway through a rule. You cannot te
 
 ### Learn
 
-Start here: Martin Fowler's [Repository](https://martinfowler.com/eaaCatalog/repository.html), and the Microsoft architecture guide's [infrastructure persistence chapter](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design).
+Start here: Martin Fowler's [Repository](https://martinfowler.com/eaaCatalog/repository.html) and [Unit of Work](https://martinfowler.com/eaaCatalog/unitOfWork.html), and the Microsoft architecture guide's [infrastructure persistence chapter](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design). On EF Core the unit of work is a short-lived `DbContext`. How long to keep one, and what breaks if it is a singleton, is in [ef-core-review](https://github.com/xolghadr/ef-core-review).
 
 ### Review
 

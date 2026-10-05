@@ -79,4 +79,4 @@ If you have five weekdays, do not try to reread every page.
 
 ## Coding puzzles
 
-This index does not cover algorithm puzzles. Practice those on the set you already use. When a puzzle ends, you should still be able to say the cost of your solution in time and memory, and whether the approach would survive a million rows. That sentence is the bridge back to this roadmap.
+This index does not cover algorithm puzzles. Practice those in [dsa-guide](https://github.com/xolghadr/dsa-guide). When a puzzle ends, you should still be able to say the cost of your solution in time and memory, and whether the approach would survive a million rows. That sentence is the bridge back to this roadmap.
